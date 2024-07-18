@@ -12,15 +12,11 @@ namespace EjemploAPIRest
         [HttpGet]
         public IActionResult CalcularNumeroMayor(int numero1, int numero2)
         {
-            int valorMayor = 0;
+            if (numero1 == numero2) { return Ok(new { resultado = "Los números son iguales" }); }
 
-            if (numero1 == numero2) {   valorMayor = numero1; }
+            if (numero1 > numero2) { return Ok($"El número {numero1} es mayor"); }
 
-            if (numero1 > numero2)  {   valorMayor = numero1; }
-
-            if (numero2 > numero1)  {   valorMayor = numero2; }
-
-            return Ok(new { resultado = $"El numero enviado es el {valorMayor}" });
+            return Ok($"El número {numero2} es mayor");
         }
 
     }
